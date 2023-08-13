@@ -54,10 +54,15 @@ actions:
         
   installUtils:
     - cmd [storage]: |-
-        yum-config-manager --add-repo https://copr.fedorainfracloud.org/coprs/copart/restic/repo/epel-7/copart-restic-epel-7.repo
-        yum-config-manager --enable copr:copr.fedorainfracloud.org:copart:restic
-        yum -y install restic
-        yum-config-manager --disable copr:copr.fedorainfracloud.org:copart:restic
+        if which dnf; then
+            dnf install epel-release
+            dnf install restic
+        else
+            yum-config-manager --add-repo https://copr.fedorainfracloud.org/coprs/copart/restic/repo/epel-7/copart-restic-epel-7.repo
+            yum-config-manager --enable copr:copr.fedorainfracloud.org:copart:restic
+            yum -y install restic
+            yum-config-manager --disable copr:copr.fedorainfracloud.org:copart:restic
+        fi 
         wget -O /root/getBackups.sh ${baseUrl}/scripts/getBackups.sh; chmod +x /root/getBackups.sh;
         wget -O /root/getBackupsAllEnvs.sh ${baseUrl}/scripts/getBackupsAllEnvs.sh; chmod +x /root/getBackupsAllEnvs.sh;
       user: root
