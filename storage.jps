@@ -32,8 +32,8 @@ onApplySubscriptionSettings:
     action: applyEnvSettings
     settings:
       targetAppid: ${event.params.targetAppid}
-      cloudlets: ${event.params.settings.cloudlets:6}
-      diskspace: ${event.params.settings.diskspace:10}000
+      cloudlets: ${event.params.settings.cloudlets}
+      diskspace: ${event.params.settings.diskspace}000
 
 onInstall: 
   - addMetadata
