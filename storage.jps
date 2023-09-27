@@ -32,7 +32,7 @@ onApplySubscriptionSettings:
     action: applyEnvSettings
     settings:
       targetAppid: ${event.params.targetAppid}
-      nodes: ${event.params.settings.cp.nodes:1}
+      nodes: ${event.params.settings.nodes:1}
       cloudlets: ${event.params.settings.cloudlets:6}
       diskspace: ${event.params.settings.diskspace:10}000
 
