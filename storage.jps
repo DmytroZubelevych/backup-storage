@@ -15,11 +15,7 @@ settings:
   onBeforeInit: scripts/onBeforeInit.js
   
 onBeforeInstall: |
-  var clusterEnabled = false;
-  if ("${settings.clustered}" == "true") {
-    clusterEnabled = true;
-  }
-  return {result:0, "nodes":[{"count":"${settings.storageNodesCount:1}","nodeGroup":"storage","nodeType":"storage", "cloudlets": "${settings.cloudlets:6}", "diskLimit": "${settings.diskspace:settings.storageSize}","cluster": clusterEnabled}]};
+  return {result:0, "nodes":[{"count":"${settings.storageNodesCount:1}","nodeGroup":"storage","nodeType":"storage", "cloudlets": "${settings.cloudlets:6}", "diskLimit": "${settings.storageSize:10}","cluster": "${settings.clustered:false}"}]};
 
 nodes: definedInOnBeforeInstall
 
