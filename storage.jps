@@ -12,10 +12,10 @@ categories:
   - wordpress
 
 settings:
-  onBeforeInit: scripts/onBeforeInit.js
+  onBeforeInit: scripts/createOnBeforeInit.js
   
 onBeforeInstall: |
-  return {result:0, "nodes":[{"count":"${settings.storageNodesCount:1}","nodeGroup":"storage","nodeType":"storage", "cloudlets": "${settings.cloudlets:6}", "diskLimit": "${settings.storageSize:10}","cluster": "${settings.clustered:false}"}]};
+  return {result:0, "nodes":[{"count":"${settings.storageNodesCount:1}","nodeGroup":"storage","nodeType":"storage", "cloudlets": "${settings.cloudlets:6}", "diskLimit": "${settings.diskspace:10}","cluster": "${settings.clustered:false}"}]};
 
 nodes: definedInOnBeforeInstall
 
